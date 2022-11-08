@@ -1,0 +1,9 @@
+$header-color: rgba(0, 24, 46, 1);
+$text-color: rgba(255, 255, 255, 1);
+$selected-header: rgba(255, 255, 255, 1);
+$unselected-header: rgba(255, 255, 255, 0.65);
+$home-background: rgba(240, 242, 245, 1);
+
+$selected-footer: $selected-header;
+$footer-color: $header-color;
+$unselected-footer: $unselected-header;
