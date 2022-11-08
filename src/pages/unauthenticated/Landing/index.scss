@@ -1,1 +1,10 @@
 @import "../../../styles/styles";
+
+.Landing {
+    &-Form {
+        // add padding to all children
+        & > * {
+            margin: 1rem;
+        }
+    }
+}

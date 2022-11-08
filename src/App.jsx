@@ -5,10 +5,6 @@ import React, { Suspense, lazy } from "react";
 import "./styles/App.scss";
 import Loading from "./components/Loading";
 
-type Props = {
-  isAuthenticated: boolean,
-};
-
 // Lazy load the pages
 const [
   Landing,
@@ -25,7 +21,7 @@ class App extends React.Component<Props> {
     ];
 
     const errorRoutes = [
-      <Route key={paths.error} component={ErrorPage} />,
+      <Route key={paths.error} path={paths.error} component={ErrorPage} />,
     ];
 
     const routes = [
@@ -40,7 +36,7 @@ class App extends React.Component<Props> {
     return (
       <div className={isBrowser ? "App" : "App-mobile"}>
         <Suspense fallback={<Loading/>}>
-          <BrowserRouter>
+          <BrowserRouter >
             <div className="body-content" key="body-content">
               <Switch>{this.getRoutes()}</Switch>
             </div>
