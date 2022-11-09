@@ -2,7 +2,6 @@ import "./index.scss";
 import React, { useEffect, lazy } from "react";
 import { theme } from "../../../styles/_colors.scss";
 import { fontMain } from "../../../styles/_fonts.scss";
-import { Redirect } from "react-router-dom";
 // Lazy load the form components
 const [
   InputNameField,
@@ -69,9 +68,6 @@ const Landing = () => {
         setOccupationList(response.data.occupations);
         return;
       }
-
-      // failure
-      <Redirect to="/error" />;
     }
     fetchData();
 

@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { Button } from "@mui/material";
 import { postForm } from "../../api/main.api";
 import { ButtonSX } from "../../constants/style";
-import { Redirect } from "react-router-dom";
 
 const SubmitButton = (props) => {
   const data = {
