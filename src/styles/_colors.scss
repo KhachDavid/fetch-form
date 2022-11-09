@@ -1,9 +1,19 @@
-$header-color: rgba(0, 24, 46, 1);
-$text-color: rgba(255, 255, 255, 1);
-$selected-header: rgba(255, 255, 255, 1);
-$unselected-header: rgba(255, 255, 255, 0.65);
-$home-background: rgba(240, 242, 245, 1);
+$text-color-light: rgb(117, 113, 113);
+$text-color-dark: rgb(63, 61, 61);
+$home-background: #efefef;
+$error-color: rgb(255, 0, 0);
+$theme: #ff9900;
+$card-color: #fff;
+$submit-green: #00a400;
+$submit-green-hover: #008000;
 
-$selected-footer: $selected-header;
-$footer-color: $header-color;
-$unselected-footer: $unselected-header;
+:export {
+    textColorLight: $text-color-light;
+    textColorDark: $text-color-dark;
+    homeBackground: $home-background;
+    submitGreen: $submit-green;
+    submitGreenHover: $submit-green-hover;
+    errorColor: $error-color;
+    cardColor: $card-color;
+    theme: $theme;
+}

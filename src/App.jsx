@@ -14,7 +14,7 @@ const [
   import("./pages/unauthenticated/ErrorPage"),
 ].map((component) => lazy(() => component));
 
-class App extends React.Component<Props> {
+class App extends React.Component {
   getRoutes = () => {
     const defaultRoutes = [
       <Route key={paths.landing} path={paths.landing} component={Landing} />,

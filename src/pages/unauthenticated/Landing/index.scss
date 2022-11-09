@@ -1,10 +1,31 @@
 @import "../../../styles/styles";
 
+.Header {
+    padding-top: 2rem;
+}
+
 .Landing {
-    &-Form {
-        // add padding to all children
-        & > * {
-            margin: 1rem;
-        }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $card-color;
+    border-radius: 1rem;
+    padding: 1rem;
+
+    // center the content
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+    // add all children to the same flexbox
+    & > * {
+        margin: 1rem !important;
+    }
+
+    &-Header {
+        text-align: center;
     }
 }

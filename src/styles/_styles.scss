@@ -1,5 +1,8 @@
 @import "fonts";
 @import "colors";
 
-$header-height: 5rem;
-$footer-height: $header-height
+$width: 35vw;
+
+:export {
+  width: $width;
+}
