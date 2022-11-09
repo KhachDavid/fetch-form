@@ -2,6 +2,7 @@ import "./index.scss";
 import React, { useEffect, lazy } from "react";
 import { theme } from "../../../styles/_colors.scss";
 import { fontMain } from "../../../styles/_fonts.scss";
+import { Redirect } from "react-router-dom";
 // Lazy load the form components
 const [
   InputNameField,
@@ -20,9 +21,8 @@ const [
 ].map((component) => lazy(() => component));
 
 import { getForm } from "../../../api/main.api";
-import { createBrowserHistory } from "history";
 import Loading from "../../../components/Loading";
-import { Typography } from "@mui/material";
+import { Snackbar, Typography, Alert } from "@mui/material";
 
 const Landing = () => {
   const [isLoading, setLoading] = React.useState(false);
@@ -34,8 +34,8 @@ const Landing = () => {
   const [stateName, setStateName] = React.useState("");
   const [stateList, setStateList] = React.useState([]);
   const [occupationList, setOccupationList] = React.useState([]);
-
-  const history = createBrowserHistory();
+  const [isSuccess, setSuccess] = React.useState(false);
+  const [isFailure, setFailure] = React.useState(false);
 
   const handleEnter = (event) => {
     if (event.key === "Enter") {
@@ -71,7 +71,7 @@ const Landing = () => {
       }
 
       // failure
-      history.push("/error");
+      <Redirect to="/error" />;
     }
     fetchData();
 
@@ -159,6 +159,8 @@ const Landing = () => {
           stateName={stateName}
           occupationName={occupationName}
           setLoading={setLoading}
+          setSuccess={setSuccess}
+          setFailure={setFailure}
           isDisabled={
             fullName === "" ||
             email === "" ||
@@ -170,6 +172,18 @@ const Landing = () => {
           }
         />
       </div>
+      <Snackbar
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        open={isSuccess}
+      >
+        <Alert severity="success">Account created successfully!</Alert>
+      </Snackbar>
+      <Snackbar
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        open={isFailure}
+      >
+        <Alert severity="error">Account creation failed!</Alert>
+      </Snackbar>
     </>
   );
 };

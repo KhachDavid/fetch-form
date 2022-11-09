@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Button } from "@mui/material";
 import { postForm } from "../../api/main.api";
 import { ButtonSX } from "../../constants/style";
+import { Redirect } from "react-router-dom";
 
 const SubmitButton = (props) => {
   const data = {
@@ -16,8 +17,25 @@ const SubmitButton = (props) => {
   const handleSubmit = async (data) => {
     props.setLoading(true);
     const response = await postForm(data);
-    props.setLoading(false);
-    console.log(response);
+
+    if (response.status === 201) {
+      // success
+      props.setLoading(false);
+      props.setSuccess(true);
+      // in two seconds, set success to false
+      setTimeout(() => {
+        props.setSuccess(false);
+      }, 2000);
+    } else {
+      // error
+      props.setLoading(false);
+      props.setFailure(true);
+      // in two seconds, set failure to false
+      setTimeout(() => {
+        props.setFailure(false);
+      }
+      , 2000);
+    }
   };
 
   return (
@@ -40,6 +58,8 @@ SubmitButton.propTypes = {
   stateName: PropTypes.string.isRequired,
   occupationName: PropTypes.string.isRequired,
   setLoading: PropTypes.func.isRequired,
+  setSuccess: PropTypes.func.isRequired,
+  setFailure: PropTypes.func.isRequired,
   isDisabled: PropTypes.bool,
 };
 

@@ -6,41 +6,33 @@ import "./styles/App.scss";
 import Loading from "./components/Loading";
 
 // Lazy load the pages
-const [
-  Landing,
-  ErrorPage,
-] = [
+const [Landing, ErrorPage] = [
   import("./pages/unauthenticated/Landing"),
   import("./pages/unauthenticated/ErrorPage"),
 ].map((component) => lazy(() => component));
 
 class App extends React.Component {
-  getRoutes = () => {
-    const defaultRoutes = [
-      <Route key={paths.landing} path={paths.landing} component={Landing} />,
-    ];
-
-    const errorRoutes = [
-      <Route key={paths.error} path={paths.error} component={ErrorPage} />,
-    ];
-
-    const routes = [
-      ...defaultRoutes,
-      ...errorRoutes,
-    ];
-
-    return routes;
-  };
-
   render() {
     return (
       <div className={isBrowser ? "App" : "App-mobile"}>
-        <Suspense fallback={<Loading/>}>
-          <BrowserRouter >
-            <div className="body-content" key="body-content">
-              <Switch>{this.getRoutes()}</Switch>
-            </div>
-          </BrowserRouter>
+        <Suspense fallback={<Loading />}>
+          <div className="body-content" key="body-content">
+            <BrowserRouter>
+              <Switch>
+                <Route
+                  key={paths.landing}
+                  path={paths.landing}
+                  component={Landing}
+                />
+
+                <Route
+                  key={paths.error}
+                  path={paths.error}
+                  component={ErrorPage}
+                />
+              </Switch>
+            </BrowserRouter>
+          </div>
         </Suspense>
       </div>
     );
