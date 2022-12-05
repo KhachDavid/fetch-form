@@ -4,7 +4,8 @@ import "./styles/App.scss";
 import Loading from "./components/Loading";
 
 // Lazy load the pages
-import Landing from "./pages/unauthenticated/Landing";
+import LandingPage from "./pages/unauthenticated/LandingPage";
+import Footer from "./components/Footer";
 
 class App extends React.Component {
   render() {
@@ -12,8 +13,9 @@ class App extends React.Component {
       <div className={isBrowser ? "App" : "App-mobile"}>
         <Suspense fallback={<Loading />}>
           <div className="body-content" key="body-content">
-            <Landing />
+            <LandingPage />
           </div>
+          <Footer/>
         </Suspense>
       </div>
     );

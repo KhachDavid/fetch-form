@@ -1,0 +1,23 @@
+// create a sticky footer component that will always be at the bottom of the page using MUI
+
+// import MUI
+
+// create a footer component
+// make footer sticky
+
+.Footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+    // center the footer
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // stack the footer items on top of each other
+    flex-direction: column;
+
+    // add some margins
+    margin: 1rem 0;
+}

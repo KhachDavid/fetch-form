@@ -69,7 +69,7 @@ export const SelectLabelProps = {
   },
 };
 
-export const ButtonSX = {
+export const SubmitButtonSX = {
   borderRadius: "1rem",
   backgroundColor: submitGreen,
 
@@ -86,4 +86,44 @@ export const ButtonSX = {
   "&:focus": {
     outline: "none",
   },
+};
+
+export const SecondaryButtonSX = {
+  // remove borders and just leave the text
+  border: "none",
+  borderRadius: "1rem",
+  backgroundColor: "transparent",
+
+  // change text color
+  color: textColorLight,
+
+  "&:hover": {
+    color: textColorDark,
+
+    // Reset on touch devices, it doesn't add specificity
+    "@media (hover: none)": {
+      backgroundColor: textColorLight,
+    },
+  },
+
+  // focus
+  "&:focus": {
+    outline: "none",
+  },
+};
+
+export const SnackbarSX = {
+  vertical: "bottom",
+  horizontal: "right",
+};
+
+export const LoadingSX = {
+  top: 0,
+  left: 0,
+  bottom: 0,
+  right: 0,
+  position: "absolute",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 };
