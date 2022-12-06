@@ -51,31 +51,3 @@ test('Shows "Sign Up"', async () => {
     waitFor(() => expect(screen.getByText("Sign Up")).toBeInTheDocument())
   );
 });
-
-test('Shows "Full Name"', async () => {
-  await act(() =>
-    waitFor(() =>
-      expect(screen.getByLabelText("Full Name")).toBeInTheDocument()
-    )
-  );
-});
-
-test('Shows "Email"', async () => {
-  await act(() =>
-    waitFor(() => expect(screen.getByLabelText("Email")).toBeInTheDocument())
-  );
-});
-
-test('Shows "Password"', async () => {
-  await act(() =>
-    waitFor(() => expect(screen.getByLabelText("Password")).toBeInTheDocument())
-  );
-});
-
-test('Shows "Confirm Password"', async () => {
-  await act(() =>
-    waitFor(() =>
-      expect(screen.getByLabelText("Confirm Password")).toBeInTheDocument()
-    )
-  );
-});
