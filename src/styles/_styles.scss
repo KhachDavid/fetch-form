@@ -3,6 +3,7 @@
 
 $width: 35vw;
 
+// Exported to be used in React components
 :export {
   width: $width;
 }

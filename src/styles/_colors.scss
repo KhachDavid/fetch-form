@@ -1,3 +1,5 @@
+// All colors are defined here
+
 $text-color-light: rgb(117, 113, 113);
 $text-color-dark: rgb(63, 61, 61);
 $home-background: #efefef;
@@ -7,6 +9,7 @@ $card-color: #fff;
 $submit-green: #00a400;
 $submit-green-hover: #008000;
 
+// Exported to be used in React components
 :export {
     textColorLight: $text-color-light;
     textColorDark: $text-color-dark;

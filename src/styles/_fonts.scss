@@ -3,6 +3,7 @@ $large-font-size: 1.5rem;
 $medium-font-size: 1.25rem;
 $small-font-size: 1rem;
 
+// Exported to be used in React components
 :export {
     fontMain: $font-main;
     largeFontSize: $large-font-size;

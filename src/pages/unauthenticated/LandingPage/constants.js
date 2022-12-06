@@ -32,6 +32,8 @@ export const getFormRecipe = () => {
     {
       formType: TEXT_INPUT,
       className: "Landing-Name",
+      id: languages[currentLanguage].FULL_NAME_LABEL,
+      name: languages[currentLanguage].FULL_NAME_LABEL,
       label: languages[currentLanguage].FULL_NAME_LABEL,
       type: TEXTFIELD_TYPES.TEXT,
       value: fullName,
@@ -42,6 +44,8 @@ export const getFormRecipe = () => {
     {
       formType: TEXT_INPUT,
       className: "Landing-Email",
+      id: languages[currentLanguage].EMAIL_LABEL,
+      name: languages[currentLanguage].EMAIL_LABEL,
       label: languages[currentLanguage].EMAIL_LABEL,
       type: TEXTFIELD_TYPES.EMAIL,
       value: email,
@@ -52,6 +56,8 @@ export const getFormRecipe = () => {
     {
       formType: TEXT_INPUT,
       className: "Landing-Password",
+      id: languages[currentLanguage].PASSWORD_LABEL,
+      name: languages[currentLanguage].PASSWORD_LABEL,
       label: languages[currentLanguage].PASSWORD_LABEL,
       type: TEXTFIELD_TYPES.PASSWORD,
       value: password,
@@ -62,6 +68,8 @@ export const getFormRecipe = () => {
     {
       formType: TEXT_INPUT,
       className: "Landing-Password-Confirm",
+      id: languages[currentLanguage].CONFIRM_PASSWORD_LABEL,
+      name: languages[currentLanguage].CONFIRM_PASSWORD_LABEL,
       label: languages[currentLanguage].CONFIRM_PASSWORD_LABEL,
       type: TEXTFIELD_TYPES.PASSWORD,
       value: confirmPassword,

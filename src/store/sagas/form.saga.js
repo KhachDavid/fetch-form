@@ -1,3 +1,8 @@
+/**
+ * This file contains all the api call boilerplates.
+ * It also is used to define side effects after getting a response from the backend.
+ */
+
 // redux saga imports
 import { call, delay, put, select, takeLatest } from "redux-saga/effects";
 

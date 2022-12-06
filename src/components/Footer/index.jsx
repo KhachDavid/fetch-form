@@ -1,15 +1,25 @@
-// create a footer component that can be reused across the app
-// and make it sticky to the bottom of the page
 import React from "react";
+
+// mui imports
 import { Button, Typography } from "@mui/material";
+
+// style imports
 import { theme } from "../../styles/_colors.scss";
 import { fontMain } from "../../styles/_fonts.scss";
 import "./index.scss";
 import { SecondaryButtonSX } from "../../constants/style";
+
+// redux imports
 import { useDispatch } from "react-redux";
 import { setLanguage } from "../../store/actions/language.action";
+
+// constant imports
 import { languageList } from "../../languages/constants";
 
+/**
+ * A footer component that can be reused across the app
+ * sticky to the bottom of the page
+ */
 const Footer = () => {
   const dispatch = useDispatch();
 

@@ -1,3 +1,9 @@
+/**
+ * This file contains all the styles that are used in the app.
+ * In the future, if we want to change the theme of the app, we can do it here.
+ * In addition, once the file starts to get too big, we can split it into multiple files.
+ */
+
 import {
   theme,
   textColorLight,

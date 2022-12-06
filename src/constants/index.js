@@ -2,6 +2,7 @@
 export const TEXT_INPUT = "textInput";
 export const SELECT_INPUT = "selectInput";
 
+// alert severities available
 export const SEVERITY = {
   ERROR: "error",
   SUCCESS: "success",

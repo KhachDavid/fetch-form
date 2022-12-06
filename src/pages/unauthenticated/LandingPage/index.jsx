@@ -5,22 +5,18 @@
 import React, { useEffect, lazy } from "react";
 
 // Lazy load the form components
-const [CustomTextField, CustomSelect, Loading] = [
+const [CustomTextField, CustomSelect] = [
   import("../../../components/CustomTextField"),
   import("../../../components/CustomSelect"),
-  import("../../../components/Loading"),
 ].map((component) => lazy(() => component));
 
-// style imports
+// mui imports
 import { Typography, FormGroup, Button } from "@mui/material";
+
+// style imports
 import { theme } from "../../../styles/_colors.scss";
 import { fontMain } from "../../../styles/_fonts.scss";
 import "./index.scss";
-
-// constant imports
-import { SELECT_INPUT, TEXT_INPUT } from "../../../constants";
-import { SubmitButtonSX } from "../../../constants/style";
-import { getFormRecipe, renderAlerts } from "./constants";
 
 // redux imports
 import {
@@ -30,13 +26,17 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { languages } from "../../../languages";
 
+// constant imports
+import { SELECT_INPUT, TEXT_INPUT } from "../../../constants";
+import { SubmitButtonSX } from "../../../constants/style";
+import { getFormRecipe, renderAlerts } from "./constants";
+
 /**
  *
  * @returns {JSX.Element} Landing page
  */
 const LandingPage = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector((state) => state.status.isWaiting);
   const currentLanguage = useSelector((state) => state.language.language);
 
   useEffect(() => {
@@ -72,65 +72,60 @@ const LandingPage = () => {
   return (
     <React.Fragment>
       {renderAlerts()}
+      {getFormHeader()}
+      {/** Form elements are defined in ./constants.js */}
+      <FormGroup className="Form">
+        {formRecipe.map((recipe) => {
+          switch (recipe.formType) {
+            case TEXT_INPUT:
+              return (
+                <CustomTextField
+                  key={recipe.className}
+                  className={recipe.className}
+                  name={recipe.name}
+                  id={recipe.id}
+                  label={recipe.label}
+                  type={recipe.type}
+                  value={recipe.value}
+                  setValue={recipe.setValue}
+                  error={recipe.error}
+                  helperText={recipe.helperText}
+                />
+              );
+            case SELECT_INPUT:
+              return (
+                <CustomSelect
+                  key={recipe.className}
+                  className={recipe.className}
+                  label={recipe.label}
+                  name={recipe.name}
+                  options={recipe.options}
+                  value={recipe.value}
+                  setValue={recipe.setValue}
+                />
+              );
+            default:
+              return null;
+          }
+        })}
 
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <>
-          {getFormHeader()}
-          {/** Form elements are defined in ./constants.js */}
-          <FormGroup className="Form">
-            {formRecipe.map((recipe) => {
-              switch (recipe.formType) {
-                case TEXT_INPUT:
-                  return (
-                    <CustomTextField
-                      key={recipe.className}
-                      className={recipe.className}
-                      label={recipe.label}
-                      type={recipe.type}
-                      value={recipe.value}
-                      setValue={recipe.setValue}
-                      error={recipe.error}
-                      helperText={recipe.helperText}
-                    />
-                  );
-                case SELECT_INPUT:
-                  return (
-                    <CustomSelect
-                      key={recipe.className}
-                      className={recipe.className}
-                      label={recipe.label}
-                      name={recipe.name}
-                      options={recipe.options}
-                      value={recipe.value}
-                      setValue={recipe.setValue}
-                    />
-                  );
-                default:
-                  return null;
-              }
-            })}
-
-            {/** Note: this is the only button component in the codebase
-             * Make this a reusable component if another button is needed
-             */}
-            <Button
-              variant="contained"
-              type="submit"
-              sx={SubmitButtonSX}
-              onClick={() => dispatch(createAccountRequest())}
-              disabled={
-                // checks if at least one of the fields is empty or invalid
-                formRecipe.some((recipe) => recipe.error) ||
-                formRecipe.some((recipe) => recipe.value === "")
-              }
-            >
-              {languages[currentLanguage].SIGN_UP_LABEL}
-            </Button>
-          </FormGroup>
-        </>
-      )}
+        {/** Note: this is the only button component in the codebase
+         * Make this a reusable component if another button is needed
+         */}
+        <Button
+          variant="contained"
+          type="submit"
+          sx={SubmitButtonSX}
+          onClick={() => dispatch(createAccountRequest())}
+          disabled={
+            // checks if at least one of the fields is empty or invalid
+            formRecipe.some((recipe) => recipe.error) ||
+            formRecipe.some((recipe) => recipe.value === "")
+          }
+        >
+          {languages[currentLanguage].SIGN_UP_LABEL}
+        </Button>
+      </FormGroup>
     </React.Fragment>
   );
 };
